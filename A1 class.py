@@ -13,6 +13,7 @@ class User(db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     passord = db.Column(db.String(80), unique=True, nullable=False)
     balance = db.Column(db.Integer, unique=True)
+    #0 stands for buyer, 1 stands for seller
     bORs= db.Column(db.Integer, nullable=False)
     products = db.relationship("Product")
     
