@@ -42,7 +42,7 @@ class Transaction(db.Model):
     complete_time = db.Column(db.Integer)
 
     def __repr__(self):
-        return '<User %r>' % self.name
+        return '<Transaction %r>' % self.name
 
 
 # Create Transaction detail class
@@ -53,4 +53,4 @@ class Transaction_detail(db.Model):
     amount = db.Column(db.Integer, nullable=False)
 
     def __repr__(self):
-        return '<Transaction %r>' % self.name
+        return '<Transaction detail%r>' % self.name
