@@ -72,10 +72,10 @@ class Review(db.Model):
     #basic attributes
     review_id = db.Column(db.Integer, unique=True, primary_key=True)
     product_id = db.Column(db.Integer, unique = False, nullable = False)
-    user_id = db.Column(db.Integer, nullable = True)
+    user_id = db.Column(db.Integer, unique= True ,nullable = True)
     #The length of review could adjust in futere dev
     review_content = db.Column(db.String(300), nullable = True)
-    post_time = db.Column(db.String(20), unique = True, nullable = False)
+    post_time = db.Column(db.String(40), unique = True, nullable = False)
     
     def __repr__(self):
         return '<Review %r)' % self.Review
