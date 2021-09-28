@@ -68,6 +68,15 @@ class Banking_info(db.Model):
     def __repr__(self):
         return '<Customer Bank %r)' % self.Banking_name
     
+class Review(db.Model):
+    #basic attributes
+    review_id = db.Column(db.Integer, unique=True, primary_key=True)
+    product_id = db.Column(db.Integer, unique = False, nullable = False)
+    user_id = db.Column(db.Integer, nullable = True)
+    #The length of review could adjust in futere dev
+    review_content = db.Column(db.String(300), nullable = True)
+    post_time = db.Column(db.String(20), unique = True, nullable = False)
     
-    
- main
+    def __repr__(self):
+        return '<Review %r)' % self.Review
+main
