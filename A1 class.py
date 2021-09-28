@@ -36,7 +36,7 @@ class Product(db.Model):
 class Transaction(db.Model):
     # basic attributes
     id = db.Column(db.Integer, primary_key=True)
-    time = db.Column(db.String(80), unique=True, nullable=False)
+    time = db.Column(db.String(80), nullable=False)
     address = db.Column(db.String(120), unique=True, nullable=False)
     order_status = db.Column(db.String(80), nullable=False)
     complete_time = db.Column(db.Integer)
