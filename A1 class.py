@@ -13,6 +13,7 @@ class User(db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=True, nullable=False)
     balance = db.Column(db.Integer, unique=True)
+    # 0 stands for buyers, 1 stands for sellers.
     bORs= db.Column(db.Integer, nullable=False)
     products = db.relationship("Product")
     
@@ -26,7 +27,7 @@ class Product(db.Model):
     productName = db.Column(db.String(80), unique=True, nullable=False)
     seller = db.Column(db.Integer, db.ForeignKey("user_id"))
     stock = db.Column(db.Integer, nullable=False)
-    price = db.Column(db.Integer, nullable=False)
+    price = db.Column(db.Integer, unique=True, nullable=False)
 
     def __repr__(self):
         return '<Product %r)' % self.productName
