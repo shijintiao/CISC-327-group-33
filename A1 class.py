@@ -13,7 +13,7 @@ class User(db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     passord = db.Column(db.String(80), unique=True, nullable=False)
     balance = db.Column(db.Integer, unique=True)
-    #0 stands for buyers, 1 stands for sellers.
+    #0 stands for buyers, 1 stands for sellers
     bORs= db.Column(db.Integer, nullable=False)
     products = db.relationship("Product")
     
@@ -31,4 +31,19 @@ class Product(db.Model):
 
     def __repr__(self):
         return '<Product %r)' % self.productName
+    
+class Banking_info(db.Model):
+    #basic attributes
+    id = db.Column(db.Integer, primary_key=True)
+    Banking_name = db.Column(db.String(20),unique=False, nullable=True)
+    Banking_account = db.Column(db.Integer, unique=True,nullable=True)
+    #Banking token is a secret key from bank to customer so the customer won't need Personal identity verification to complete the transcation. 
+    Banking_token = db.Column(db.String(80), unique=True,nullable=True)
+    
+    def __repr__(self):
+        return '<Customer Bank %r)' % self.Banking_name
+    
+    
+    
+    
     
