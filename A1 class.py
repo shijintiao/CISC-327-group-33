@@ -36,7 +36,7 @@ class Banking_info(db.Model):
     #basic attributes
     id = db.Column(db.Integer, primary_key=True)
     Banking_name = db.Column(db.String(20),unique=False, nullable=True)
-    Banking_account = db.Column(db.Integer, unique=True)
+    Banking_account = db.Column(db.Integer, unique=True,nullable=True)
     #Banking token is a secret key from bank to customer so the customer won't need Personal identity verification to complete the transcation. 
     Banking_token = db.Column(db.String(80), unique=True,nullable=True)
     
