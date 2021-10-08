@@ -32,8 +32,6 @@ class Product(db.Model):
     def __repr__(self):
         return '<Product %r)' % self.productName
     
-  <<<<<<< branch_from_HG
-
 # Create Transaction class
 class Transaction(db.Model):
     # basic attributes
@@ -79,4 +77,3 @@ class Review(db.Model):
     
     def __repr__(self):
         return '<Review %r)' % self.Review
-main
