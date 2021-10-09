@@ -23,6 +23,24 @@ class User(db.Model):
         return '<User %r>' % self.username
 
 
+# This is the Transaction class
+class Transaction(db.Model):
+    # User's email address.
+    # It could be not unique since
+    # a same user can have more than one transactions.
+    user_email = db.Column(
+        db.String(50), nullable=False, primary_key=True)
+    product_id = db.Column(
+        db.String(50), nullable=False)
+    price = db.Column(
+        db.String(5), nullable=False)
+    date = db.Column(
+        db.string(20), nullable=False)
+
+    def __repr__(self):
+        return '<Transaction %r>' % self.username
+
+
 # create all tables
 db.create_all()
 
