@@ -38,7 +38,7 @@ class Transaction(db.Model):
     # It could be not unique since
     # a same user can have more than one transactions.
     user_email = db.Column(
-        db.String(50), nullable=False, primary_key=True)
+        db.String(50), nullable=False)
     product_id = db.Column(
         db.String(50), nullable=False)
     price = db.Column(
