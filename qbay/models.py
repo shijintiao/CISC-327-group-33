@@ -71,6 +71,28 @@ class Review(db.Model):
         db.String(200), nullable=True)
 
 
+# This is the Product class
+class Product(db.Model):
+    # It is a self-increment attribute.
+    # Every time implement an object,
+    # it will be assigned an ID automatically
+    Id_incremental = db.Column(
+        db.Integer,
+        Identity(start=1, cycle=True),
+        nullable=False, unique=True,
+        primary_key=True)
+    title = db.Column(
+        db.String(50), nullable=True)
+    description = db.Column(
+        db.String(200), nullable=True)
+    price = db.Column(
+        db.String(5), nullable=False)
+    last_modified_date = db.Column(
+        db.String(20), nullable=False)
+    owner_email = db.Column(
+        db.String(50), nullable=False)
+
+      
 # create all tables
 db.create_all()
 
