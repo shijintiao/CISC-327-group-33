@@ -1,5 +1,6 @@
 from qbay import app
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.sql.schema import Identity
 
 
 '''
@@ -25,6 +26,14 @@ class User(db.Model):
 
 # This is the Transaction class
 class Transaction(db.Model):
+    # It is a self-increment attribute.
+    # Every time implement an object,
+    # it will be assigned an ID automatically
+    id_incremental = db.Column(
+        db.Integer,
+        Identity(start=1, cycle=True), 
+        nullable=False, unique=True,
+        primary_key=True)
     # User's email address.
     # It could be not unique since
     # a same user can have more than one transactions.
@@ -35,7 +44,7 @@ class Transaction(db.Model):
     price = db.Column(
         db.String(5), nullable=False)
     date = db.Column(
-        db.string(20), nullable=False)
+        db.String(20), nullable=False)
 
     def __repr__(self):
         return '<Transaction %r>' % self.username
