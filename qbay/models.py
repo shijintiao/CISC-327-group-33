@@ -100,7 +100,7 @@ def register(name, email, password):
     return True
 
 
-def llogin(email, password):
+def login(email, password):
     '''
     Check login information
       Parameters:
