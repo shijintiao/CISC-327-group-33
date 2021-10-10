@@ -76,13 +76,13 @@ class Product(db.Model):
     # It is a self-increment attribute.
     # Every time implement an object,
     # it will be assigned an ID automatically
-    Id_incremental = db.Column(
+    id_incremental = db.Column(
         db.Integer,
         Identity(start=1, cycle=True),
         nullable=False, unique=True,
         primary_key=True)
     title = db.Column(
-        db.String(50), nullable=True)
+        db.String(50), nullable=False)
     description = db.Column(
         db.String(200), nullable=True)
     price = db.Column(
@@ -92,7 +92,7 @@ class Product(db.Model):
     owner_email = db.Column(
         db.String(50), nullable=False)
 
-      
+
 # create all tables
 db.create_all()
 
