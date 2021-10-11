@@ -141,6 +141,7 @@ def login(email, password):
 def Create_product(title, description, last_modified_date, price, owner_email):
     D1 = date(2021, 1, 2)
     D2 = date(2025, 1, 2)
+    # Check if the title is in the right format
     if (title.startswith(' ') or
             title.endswith(' ')):
         print("first letter or last letter can't be space, please try again!")
@@ -151,27 +152,33 @@ def Create_product(title, description, last_modified_date, price, owner_email):
             space allowed only if it is not as prefix and suffix. \
                 Please try again!")
         return None
+    # Check the length of title.
     if len(title) > 80:
         print("the length of title can't be larger than 80, please try again!")
         return None
+    # Check the length of description.
     if (len(description) > 200 or
             len(description) < 20):
         print("the length of the description is not correct, \
             please try again!")
         return None
+    # Check if the description is longer than title
     if len(description) < len(title):
         print("Description has to be longer than the product's title, \
             please try again!")
         return None
+    # Check if the price is in the correct range.
     if not(price in range(10, 10001)):
         print("Price has to be of range [10, 10000]. Please  try again!")
         return None
+    # Check if the date is correct.
     if (last_modified_date < D1 or
             last_modified_date > D2):
         print("You can no longer modify this product anymore. \
             The effective is from 2021-01-02 to 2025-01-02. \
                 Please try again!")
         return None
+        # The email address can't be empty.
     if owner_email is None:
         print("The owner email cannot be empty. Please try again!")
         return None
@@ -181,7 +188,7 @@ def Create_product(title, description, last_modified_date, price, owner_email):
         print("The owner of the corresponding product \
             not exists in the database. Please try again!")
         return None
-
+    # different product can't have same title.
     Title_existed = Product.query.filter_by(title=title).all()
     if len(Title_existed) > 0:
         print("The title of the product has been created already. \
