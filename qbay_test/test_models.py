@@ -81,6 +81,7 @@ def test_r3_2_3_4_update_profile():
     Testing R3-3: Postal code has to be a valid Canadian postal code.
     Testing R3-4: User name follows the requirements above.
     '''
+
     user = login('test0@test.com', 'A123456a!')
     user.updateProfile('u00', '100 Princess St', 'K1L3M9')
     assert user.username == 'u00'
@@ -89,29 +90,60 @@ def test_r3_2_3_4_update_profile():
 
 
 def test_r4_1_Create_product():
+    '''
+    R4-1: The title of the product has to be alphanumeric-only,
+     and space allowed only if it is not as prefix and suffix.
+    '''
+
     last_modified_date = date.today()
     product = Create_product("PP1", "from brand Alienware and it \
       is brand new", last_modified_date, 100, "test0@test.com")
     assert product is not None
-    # R4-8: A user cannot create products that have the same title.
-    product = Create_product("PP1", "from brand Alienware and it is \
-      brand new", last_modified_date, 1000, "17hl111@queensu.ca")
-    assert product is None
-    # R4-1: The title of the product has to be alphanumeric-only, \
-    # and space allowed only if it is not as prefix and suffix.
     product = Create_product(" P1", "from brand Alienware and it \
       is brand new", last_modified_date, 100, "test0@test.com")
     assert product is None
-    # R4-4: Description has to be longer than the product's title.
+
+
+def test_r4_8_Create_product():
+    '''
+    R4-8: A user cannot create products that have the same title.
+    '''
+
+    last_modified_date = date.today()
+    product = Create_product("PP1", "from brand Alienware and it is \
+      brand new", last_modified_date, 1000, "17hl111@queensu.ca")
+    assert product is None
+
+
+def test_r4_4_Create_product():
+    '''
+    R4-4: Description has to be longer than the product's title.
+    '''
+
+    last_modified_date = date.today()
     product = Create_product("Pppppppppp2", "from ",
                              last_modified_date, 100, "test0@test.com")
     assert product is None
-    # R4-5: Price has to be of range [10, 10000].
+
+
+def test_r4_5_Create_product():
+    '''
+    R4-5: Price has to be of range [10, 10000].
+    '''
+
+    last_modified_date = date.today()
     product = Create_product("P2", "from brand Alienware and it \
       is brand new", last_modified_date, 9, "test0@test.com")
     assert product is None
-    # R4-7: owner_email cannot be empty. The owner of the \
-    # corresponding product must exist in the database.
+
+
+def test_r4_7_Create_product():
+    '''
+    R4-7: owner_email cannot be empty. The owner of the
+     corresponding product must exist in the database.
+    '''
+
+    last_modified_date = date.today()
     product = Create_product("P3", "from brand Alienware and it \
       is brand new", last_modified_date, 100, "")
     assert product is None
@@ -122,4 +154,20 @@ def test_r4_1_Create_product():
 
     product = Create_product("P5", "from brand Alienware and it \
       is brand new", last_modified_date, 100, "test0@test.com")
+    assert product is not None
+
+
+def test_r5_1_update_product():
+    '''
+    Testing R5-1: One can update all attributes of the product,
+    except owner_email and last_modified_date.
+    '''
+    last_modified_date = date.today()
+    product = Create_product("P1", "from brand Alienware and it \
+          is brand new", last_modified_date, 100, "test0@test.com")
+    product.update_product("1", "apple", "fresh apples from Mexico", "120")
+    assert product.id_incremental == '1'
+    assert product.title == "apple"
+    assert product.description == "fresh apples from Mexico"
+    assert product.price == "120"
     assert product is not None
