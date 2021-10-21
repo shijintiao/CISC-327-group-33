@@ -132,10 +132,9 @@ class Product(db.Model):
     # Every time implement an object,
     # it will be assigned an ID automatically
     id_incremental = db.Column(
-        db.Integer,
-        Identity(start=1, cycle=True),
-        nullable=False, unique=True,
-        primary_key=True)
+        db.Integer, primary_key=True,
+        autoincrement=True,
+        nullable=False)
     title = db.Column(
         db.String(50), nullable=False)
     description = db.Column(
