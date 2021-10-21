@@ -237,7 +237,17 @@ def login(email, password):
     return valids[0]
 
 
-def Create_product(title, description, last_modified_date, price, owner_email):
+def create_product(title, description, last_modified_date, price, owner_email):
+    '''
+    Creat a product
+      Parameters:
+        title (string):    product title
+        description (string): product description
+        last_modified_date(date): last modified date
+        owner_email(string): owner email
+      Returns:
+       True if the product has been created successfully.
+    '''
     D1 = date(2021, 1, 2)
     D2 = date(2025, 1, 2)
     # Check if the title is in the right format
@@ -301,6 +311,6 @@ def Create_product(title, description, last_modified_date, price, owner_email):
         last_modified_date=last_modified_date)
     # add it to the current database session
     db.session.add(product)
-    # actually save the user object
+    # actually save the product object
     db.session.commit()
     return True
