@@ -85,10 +85,9 @@ class Transaction(db.Model):
     # Every time implement an object,
     # it will be assigned an ID automatically
     id_incremental = db.Column(
-        db.Integer,
-        Identity(start=1, cycle=True),
-        nullable=False, unique=True,
-        primary_key=True)
+        db.Integer, primary_key=True,
+        autoincrement=True,
+        nullable=False)
     # User's email address.
     # It could be not unique since
     # a same user can have more than one transactions.
@@ -111,10 +110,9 @@ class Review(db.Model):
     # Every time implement an object,
     # it will be assigned an ID automatically
     Id_incremental = db.Column(
-        db.Integer,
-        Identity(start=1, cycle=True),
-        nullable=False, unique=True,
-        primary_key=True)
+        db.Integer, primary_key=True,
+        autoincrement=True,
+        nullable=False)
     user_email = db.Column(
         db.String(50), nullable=False)
     score = db.Column(
@@ -132,10 +130,9 @@ class Product(db.Model):
     # Every time implement an object,
     # it will be assigned an ID automatically
     id_incremental = db.Column(
-        db.Integer,
-        Identity(start=1, cycle=True),
-        nullable=False, unique=True,
-        primary_key=True)
+        db.Integer, primary_key=True,
+        autoincrement=True,
+        nullable=False)
     title = db.Column(
         db.String(50), nullable=False)
     description = db.Column(
@@ -291,15 +288,15 @@ def create_product(title, description, last_modified_date, price, owner_email):
     if owner_email is None:
         print("The owner email cannot be empty. Please try again!")
         return None
-    Owner_existed = User.query.filter_by(email=owner_email).all()
-    if (len(Owner_existed) != 1 or
+    owner_existed = User.query.filter_by(email=owner_email).all()
+    if (len(owner_existed) != 1 or
             (len(owner_email) == 0)):
         print("The owner of the corresponding product \
             not exists in the database. Please try again!")
         return None
     # different product can't have same title.
-    Title_existed = Product.query.filter_by(title=title).all()
-    if len(Title_existed) > 0:
+    title_existed = Product.query.filter_by(title=title).all()
+    if len(title_existed) > 0:
         print("The title of the product has been created already. \
             Please try again!")
         return None
