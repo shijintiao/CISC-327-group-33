@@ -144,6 +144,55 @@ class Product(db.Model):
     owner_email = db.Column(
         db.String(50), nullable=False)
 
+    def updateProduct(self, title, description, price):
+        '''
+        Update product information
+          Parameters:
+            id_incremental (Integer):     product ID
+            title (string):    product title
+            description (string): product description
+            price (string): product price
+          Returns:
+            True if product update succeeded otherwise False
+        '''
+
+        if (self.title.startswith(' ') or
+                self.title.endswith(' ')):
+            print("first letter or last letter can't be space, \
+                please try again!")
+            return None
+        # Check the length of title.
+        if len(self.title) > 80:
+            print("the length of title can't be larger than 80, \
+                please try again!")
+            return None
+        # Check the length of description.
+        if (len(self.description) > 200 or
+                len(self.description) < 20):
+            print("the length of the description is not correct, \
+                please try again!")
+            return None
+        # Check if the description is longer than title
+        if len(self.description) < len(self.title):
+            print("Description has to be longer than the product's title, \
+                    please try again!")
+            return None
+        # Check if the price is in the correct range.
+        if not (self.price in range(10, 10001)):
+            print("Price has to be of range [10, 10000]. Please try again!")
+            return None
+        # Check if the price is marked higher.
+        if price > self.price:
+            self.price = price
+        if price < self.price:
+            print("Price has to be higher than the original. \
+                Please try again!")
+            return None
+        self.title = title
+        self.description = description
+        self.last_modified_date = date.today()
+        return True
+
 
 # create all tables
 db.create_all()
