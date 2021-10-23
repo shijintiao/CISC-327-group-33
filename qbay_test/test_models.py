@@ -168,16 +168,17 @@ def test_r5_2_update_product():
     assert product_list[0].title == "PP1"
     assert product_list[0].description == "from brand Alienware and it \
       is brand new"
-    assert product_list[0].price == "100"
+    assert product_list[0].price == 100
 
 
-def test_r5_1_update_product():
+def test_r5_3_update_product():
     '''
-    R5-1: One can update all attributes of the product,
-     except owner_email and last_modified_date.
+    R5-1:  last_modified_date should be updated
+        when the update operation is successful.
     '''
 
     product_list = Product.query.filter_by(owner_email="test0@test.com").all()
     update = product_list[0].updateProduct("alienware11", "from brand \
-    Alienware and it is brand new", "test0@test.com")
-    assert update is None
+    Alienware and it is brand new", 100)
+    update_time = product_list[0].last_modified_date
+    assert update_time == date.today()

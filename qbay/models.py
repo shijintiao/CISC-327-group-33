@@ -96,7 +96,7 @@ class Transaction(db.Model):
     product_id = db.Column(
         db.String(50), nullable=False)
     price = db.Column(
-        db.String(5), nullable=False)
+        db.Integer, nullable=False)
     date = db.Column(
         db.String(20), nullable=False)
 
@@ -138,7 +138,7 @@ class Product(db.Model):
     description = db.Column(
         db.String(200), nullable=True)
     price = db.Column(
-        db.String(5), nullable=False)
+        db.Integer, nullable=False)
     last_modified_date = db.Column(
         db.String(20), nullable=False)
     owner_email = db.Column(
@@ -182,7 +182,7 @@ class Product(db.Model):
             print("Price has to be of range [10, 10000]. Please try again!")
             return None
         # Check if the price is marked higher.
-        if price > self.price:
+        if int(price) > self.price:
             self.price = price
         if price < self.price:
             print("Price has to be higher than the original. \
