@@ -1,4 +1,4 @@
-from qbay.models import register, login, create_product
+from qbay.models import register, login, create_product, Product
 from datetime import date
 
 
@@ -154,3 +154,31 @@ def test_r4_7_create_product():
     product = create_product("P5", "from brand Alienware and it \
       is brand new", last_modified_date, 100, "test0@test.com")
     assert product is not None
+
+
+def test_r5_2_update_product():
+    '''
+    R5-1: Price can be only increased but cannot be
+     decreased
+    '''
+
+    product_list = Product.query.filter_by(owner_email="test0@test.com").all()
+    product_list[0].updateProduct("alienware11", "from brand Alienware \
+    and it is brand new", 50)
+    assert product_list[0].title == "PP1"
+    assert product_list[0].description == "from brand Alienware and it \
+      is brand new"
+    assert product_list[0].price == 100
+
+
+def test_r5_3_update_product():
+    '''
+    R5-1:  last_modified_date should be updated
+        when the update operation is successful.
+    '''
+
+    product_list = Product.query.filter_by(owner_email="test0@test.com").all()
+    update = product_list[0].updateProduct("alienware11", "from brand \
+    Alienware and it is brand new", 100)
+    update_time = product_list[0].last_modified_date
+    assert update_time == date.today()
