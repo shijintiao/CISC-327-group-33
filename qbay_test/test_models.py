@@ -1,4 +1,4 @@
-from qbay.models import register, login, create_product, Product
+from qbay.models import *
 from datetime import date
 
 
@@ -7,8 +7,8 @@ def test_r1_7_user_register():
     Testing R1-7: If the email has been used, the operation failed.
     '''
 
-    assert register('u0', 'test0@test.com', 'A123456a!') is True
-    assert register('u0', 'test1@test.com', 'A123456a!') is True
+    assert register('u0', 'test0@test.com', 'A123456a!') is not None
+    assert register('u0', 'test1@test.com', 'A123456a!') is not None
     assert register('u1', 'test0@test.com', 'A123456a!') is False
 
 
@@ -82,7 +82,7 @@ def test_r3_2_3_4_update_profile():
     Testing R3-4: User name follows the requirements above.
     '''
     user = login('test0@test.com', 'A123456a!')
-    user.updateProfile('u00', '100 Princess St', 'K1L3M9')
+    updateProfile(user, 'u00', '100 Princess St', 'K1L3M9')
     assert user.username == 'u00'
     assert user.shipping_address == '100 Princess St'
     assert user.postal_code == 'K1L3M9'
@@ -179,6 +179,6 @@ def test_r5_3_update_product():
 
     product_list = Product.query.filter_by(owner_email="test0@test.com").all()
     update = product_list[0].updateProduct("alienware11", "from brand \
-    Alienware and it is brand new", 100)
-    update_time = product_list[0].last_modified_date
+    Alienware and it is brand new", 110)
+    update_time = update.last_modified_date
     assert update_time == date.today()
