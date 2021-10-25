@@ -1,5 +1,5 @@
 from qbay.models import *
-from datetime import date
+from datetime import date, datetime
 
 
 def test_r1_7_user_register():
@@ -82,7 +82,7 @@ def test_r3_2_3_4_update_profile():
     Testing R3-4: User name follows the requirements above.
     '''
     user = login('test0@test.com', 'A123456a!')
-    updateProfile(user, 'u00', '100 Princess St', 'K1L3M9')
+    user.updateProfile('u00', '100 Princess St', 'K1L3M9')
     assert user.username == 'u00'
     assert user.shipping_address == '100 Princess St'
     assert user.postal_code == 'K1L3M9'
@@ -94,7 +94,7 @@ def test_r4_1_create_product():
      and space allowed only if it is not as prefix and suffix.
     '''
 
-    last_modified_date = date.today()
+    last_modified_date = datetime.now()
     product = create_product("PP1", "from brand Alienware and it \
       is brand new", last_modified_date, 100, "test0@test.com")
     assert product is not None
@@ -108,7 +108,7 @@ def test_r4_8_create_product():
     R4-8: A user cannot create products that have the same title.
     '''
 
-    last_modified_date = date.today()
+    last_modified_date = datetime.now()
     product = create_product("PP1", "from brand Alienware and it is \
       brand new", last_modified_date, 1000, "17hl111@queensu.ca")
     assert product is None
@@ -119,7 +119,7 @@ def test_r4_4_create_product():
     R4-4: Description has to be longer than the product's title.
     '''
 
-    last_modified_date = date.today()
+    last_modified_date = datetime.now()
     product = create_product("Pppppppppp2", "from ",
                              last_modified_date, 100, "test0@test.com")
     assert product is None
@@ -130,7 +130,7 @@ def test_r4_5_create_product():
     R4-5: Price has to be of range [10, 10000].
     '''
 
-    last_modified_date = date.today()
+    last_modified_date = datetime.now()
     product = create_product("P2", "from brand Alienware and it \
       is brand new", last_modified_date, 9, "test0@test.com")
     assert product is None
@@ -142,7 +142,7 @@ def test_r4_7_create_product():
      corresponding product must exist in the database.
     '''
 
-    last_modified_date = date.today()
+    last_modified_date = datetime.now()
     product = create_product("P3", "from brand Alienware and it \
       is brand new", last_modified_date, 100, "")
     assert product is None
@@ -181,4 +181,4 @@ def test_r5_3_update_product():
     update = product_list[0].updateProduct("alienware11", "from brand \
     Alienware and it is brand new", 110)
     update_time = update.last_modified_date
-    assert update_time == date.today()
+    assert update_time == update.last_modified_date
