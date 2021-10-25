@@ -19,7 +19,7 @@ def main():
                 create_page(user.email)
                 pass
             elif choice == '3':
-                # Update Product here
+                update_product()
                 pass
             elif choice == '4':
                 user = None
