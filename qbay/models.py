@@ -31,7 +31,7 @@ class User(db.Model):
 
     def __repr__(self):
         return '<User %r>' % self.username
-    
+
     def updateProfile(self, name, address, postalCode):
         '''
         Update user profile
@@ -185,10 +185,10 @@ class Product(db.Model):
             print("Failed! The Price has to be in range[10, 10000].")
             return None
         # Check if the price is marked higher.
-        if price <= self.price:
-            print("Failed! Price must be greater than the original.")
+        if price < self.price:
+            print("Failed! Price can only increase.")
             return None
-        if int(price) > self.price:
+        if int(price) >= self.price:
             self.price = price
         self.title = title
         self.description = description

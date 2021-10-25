@@ -14,13 +14,10 @@ def main():
                            '4 to logout.')
             if choice == '1':
                 update_profile(user)
-                pass
             elif choice == '2':
                 create_page(user.email)
-                pass
             elif choice == '3':
-                # Update Product here
-                pass
+                update_product()
             elif choice == '4':
                 user = None
                 print("You have logged out! Press any key to continue!")
