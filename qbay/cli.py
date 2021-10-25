@@ -53,28 +53,28 @@ def update_product():
                            'Type 4 to update all product parameters.\n'))
         if 1 > choice or choice > 4:
             print('The choice is not in the list, please try again!')
-            update_page()
+            update_product()
         else:
             if choice == 1:
                 new_title = input('What is the new title?')
                 product_list[product_number].updateProduct(
-                    new_title,
-                    product_list[product_number].description,
-                    product_list[product_number].price)
+                            new_title,
+                            product_list[product_number].description,
+                            product_list[product_number].price)
                 return product_list[product_number]
             if choice == 2:
                 new_description = input('What is the new description?')
                 product_list[product_number].updateProduct(
-                    product_list[product_number].title,
-                    new_description,
-                    product_list[product_number].price)
+                            product_list[product_number].title,
+                            new_description,
+                            product_list[product_number].price)
                 return product_list[product_number]
             if choice == 3:
                 new_price = input('What is the new price?')
                 product_list[product_number].updateProduct(
-                        product_list[product_number].title,
-                        product_list[product_number].description,
-                        new_price)
+                            product_list[product_number].title,
+                            product_list[product_number].description,
+                            new_price)
                 return product_list[product_number]
             if choice == 4:
                 new_title = input('What is the new title?')
