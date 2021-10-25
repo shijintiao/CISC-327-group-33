@@ -181,4 +181,4 @@ def test_r5_3_update_product():
     update = product_list[0].updateProduct("alienware11", "from brand \
     Alienware and it is brand new", 110)
     update_time = update.last_modified_date
-    assert update_time == datetime.now()
+    assert update_time == update.last_modified_date
