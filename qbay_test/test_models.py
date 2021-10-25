@@ -1,4 +1,4 @@
-from qbay.models import register, login, create_product, Product
+from qbay.models import *
 from datetime import date
 
 
@@ -82,7 +82,7 @@ def test_r3_2_3_4_update_profile():
     Testing R3-4: User name follows the requirements above.
     '''
     user = login('test0@test.com', 'A123456a!')
-    updateProfile(user,'u00', '100 Princess St', 'K1L3M9')
+    updateProfile(user, 'u00', '100 Princess St', 'K1L3M9')
     assert user.username == 'u00'
     assert user.shipping_address == '100 Princess St'
     assert user.postal_code == 'K1L3M9'
