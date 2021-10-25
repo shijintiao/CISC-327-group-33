@@ -1,4 +1,4 @@
-from qbay.models import register, login, create_product
+from qbay.models import register, login, create_product, Product
 from datetime import date
 
 
@@ -7,8 +7,8 @@ def test_r1_7_user_register():
     Testing R1-7: If the email has been used, the operation failed.
     '''
 
-    assert register('u0', 'test0@test.com', 'A123456a!') is True
-    assert register('u0', 'test1@test.com', 'A123456a!') is True
+    assert register('u0', 'test0@test.com', 'A123456a!') is not None
+    assert register('u0', 'test1@test.com', 'A123456a!') is not None
     assert register('u1', 'test0@test.com', 'A123456a!') is False
 
 
@@ -82,7 +82,7 @@ def test_r3_2_3_4_update_profile():
     Testing R3-4: User name follows the requirements above.
     '''
     user = login('test0@test.com', 'A123456a!')
-    user.updateProfile('u00', '100 Princess St', 'K1L3M9')
+    updateProfile(user,'u00', '100 Princess St', 'K1L3M9')
     assert user.username == 'u00'
     assert user.shipping_address == '100 Princess St'
     assert user.postal_code == 'K1L3M9'
@@ -154,3 +154,31 @@ def test_r4_7_create_product():
     product = create_product("P5", "from brand Alienware and it \
       is brand new", last_modified_date, 100, "test0@test.com")
     assert product is not None
+
+
+def test_r5_2_update_product():
+    '''
+    R5-1: Price can be only increased but cannot be
+     decreased
+    '''
+
+    product_list = Product.query.filter_by(owner_email="test0@test.com").all()
+    product_list[0].updateProduct("alienware11", "from brand Alienware \
+    and it is brand new", 50)
+    assert product_list[0].title == "PP1"
+    assert product_list[0].description == "from brand Alienware and it \
+      is brand new"
+    assert product_list[0].price == 100
+
+
+def test_r5_3_update_product():
+    '''
+    R5-1:  last_modified_date should be updated
+        when the update operation is successful.
+    '''
+
+    product_list = Product.query.filter_by(owner_email="test0@test.com").all()
+    update = product_list[0].updateProduct("alienware11", "from brand \
+    Alienware and it is brand new", 110)
+    update_time = update.last_modified_date
+    assert update_time == date.today()
