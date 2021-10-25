@@ -42,15 +42,15 @@ def update_profile(user):
 
 def update_product():
     product_email = input('Please enter the email address '
-        'if you wnat to update a product.')
+                          'if you wnat to update a product.')
     product_number = int(input('What is the product number for'
-        ' your product')) - 1
+                          ' your product')) - 1
     product_list = Product.query.filter_by(owner_email=product_email).all()
     if product_list[product_number] is not None:
         choice = int(input('Type 1 to update product title.\n'
-                       'Type 2 to update product description.\n'
-                       'Type 3 to update product price.\n'
-                       'Type 4 to update all product parameters.\n'))
+                           'Type 2 to update product description.\n'
+                           'Type 3 to update product price.\n'
+                           'Type 4 to update all product parameters.\n'))
         if 1 > choice or choice > 4:
             print('The choice is not in the list, please try again!')
             update_page()
