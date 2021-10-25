@@ -1,6 +1,6 @@
 from qbay import app
 from flask_sqlalchemy import SQLAlchemy
-from datetime import date
+from datetime import date, datetime
 import re
 
 '''
@@ -310,8 +310,8 @@ def create_product(title, description, last_modified_date, price, owner_email):
       Returns:
        True if the product has been created successfully.
     '''
-    D1 = date(2021, 1, 2)
-    D2 = date(2025, 1, 2)
+    D1 = datetime(2021, 1, 2)
+    D2 = datetime(2025, 1, 2)
     price = int(price)
     # Check if the title is in the right format
     if (title.startswith(' ') or

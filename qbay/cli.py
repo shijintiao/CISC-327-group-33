@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import date, datetime
 from qbay.models import *
 import sys
 sys.path.append("..")
@@ -27,7 +27,7 @@ def create_page(email):
     title = input("Please enter a title.\n")
     description = input("Please enter a description for your product\n")
     price = input("Please enter the price\n")
-    date = date.today()
+    date = datetime.now()
     pro = create_product(title, description, date, price, email)
     return pro
 
