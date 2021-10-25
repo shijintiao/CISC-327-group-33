@@ -33,8 +33,8 @@ def create_page(email):
 
 
 def update_profile(user):
-    name = input("Please eneter new name\n")
-    address = input("Please enter new address\n")
-    postalCode = input("Please enter new postal code\n")
+    name = input("Please enter a new name\n")
+    address = input("Please enter a new address\n")
+    postalCode = input("Please enter a new postal code\n")
     user = user.updateProfile(name, address, postalCode)
     return user
