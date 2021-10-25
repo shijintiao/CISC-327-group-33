@@ -44,7 +44,7 @@ def update_product():
     product_email = input('Please enter the email address '
                           'if you wnat to update a product.')
     product_number = int(input('What is the product number for'
-                          ' your product')) - 1
+                               ' your product')) - 1
     product_list = Product.query.filter_by(owner_email=product_email).all()
     if product_list[product_number] is not None:
         choice = int(input('Type 1 to update product title.\n'
@@ -58,23 +58,23 @@ def update_product():
             if choice == 1:
                 new_title = input('What is the new title?')
                 product_list[product_number].updateProduct(
-                            new_title,
-                            product_list[product_number].description,
-                            product_list[product_number].price)
+                    new_title,
+                    product_list[product_number].description,
+                    product_list[product_number].price)
                 return product_list[product_number]
             if choice == 2:
                 new_description = input('What is the new description?')
                 product_list[product_number].updateProduct(
-                            product_list[product_number].title,
-                            new_description,
-                            product_list[product_number].price)
+                    product_list[product_number].title,
+                    new_description,
+                    product_list[product_number].price)
                 return product_list[product_number]
             if choice == 3:
                 new_price = input('What is the new price?')
                 product_list[product_number].updateProduct(
-                            product_list[product_number].title,
-                            product_list[product_number].description,
-                            new_price)
+                    product_list[product_number].title,
+                    product_list[product_number].description,
+                    new_price)
                 return product_list[product_number]
             if choice == 4:
                 new_title = input('What is the new title?')
