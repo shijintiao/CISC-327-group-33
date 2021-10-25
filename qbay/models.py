@@ -31,6 +31,59 @@ class User(db.Model):
 
     def __repr__(self):
         return '<User %r>' % self.username
+    
+    def updateProfile(self, name, address, postalCode):
+        '''
+        Update user profile
+            Parameter：
+                name(string):       new user name
+                address(string):    new address
+                postalCode(string): new postal code
+            Returns:
+                return true if update sucess
+        '''
+        # check if username meets the length requirement
+        if len(name) < 2 and len(name) > 20:
+            print("Failed! Your length of username must >2 and <20.")
+            return False
+        # check if whitespace take place at the first
+        # or the last at prefix or suffix
+        if name[0] == " " or name[-1] == " ":
+            print("Failed! Username can not start or end with whitespace.")
+            return False
+        # check if username has special character which is not allowed
+        if not(re.search(r'\W', name) is None):
+            print("Failed! Username has unallowed special characters.")
+            return False
+        # check if address is non-empty
+        if len(address) == 0:
+            print("Failed! The address can not be empty.")
+            return False
+        # check if address is alphanumeric-only
+        string = r"~!@#$%^&*()_+-*/<>,[].\/"
+        for i in string:
+            if i in address:
+                print("Failed! The address is not alphanumeric-only.")
+                return False
+        # check if postal code length is valid
+        if len(postalCode) != 6:
+            print("Failed! The postal length is invalid.")
+            return False
+        # check if postal code characters are vaild
+        if (not(postalCode[0].isupper()) or
+                not(postalCode[2].isupper()) or
+                not(postalCode[4].isupper())):
+            print("Failed! The postal characters is invalid.")
+            return False
+        if (not(postalCode[1].isdigit()) or
+                not(postalCode[3].isdigit()) or
+                not(postalCode[5].isdigit())):
+            print("Failed! The postal characters is invalid")
+            return False
+        self.username = name
+        self.shipping_address = address
+        self.postal_code = postalCode
+        return self
 
 
 # This is the Transaction class
@@ -259,6 +312,7 @@ def create_product(title, description, last_modified_date, price, owner_email):
     '''
     D1 = date(2021, 1, 2)
     D2 = date(2025, 1, 2)
+    price = int(price)
     # Check if the title is in the right format
     if (title.startswith(' ') or
             title.endswith(' ')):
@@ -282,7 +336,7 @@ def create_product(title, description, last_modified_date, price, owner_email):
         print("Failed! The description must be longer than title.")
         return None
     # Check if the price is in the correct range.
-    if not(price in range(10, 10001)):
+    if (price not in range(10, 10001)):
         print("Failed! The Price has to be in range[10, 10000].")
         return None
     # Check if the date is correct.
@@ -315,57 +369,3 @@ def create_product(title, description, last_modified_date, price, owner_email):
     # actually save the product object
     db.session.commit()
     return product
-
-
-def updateProfile(user, name, address, postalCode):
-    '''
-    Update user profile
-        Parameter：
-            name(string):       new user name
-            address(string):    new address
-            postalCode(string): new postal code
-        Returns:
-            return true if update sucess
-    '''
-    # check if username meets the length requirement
-    if len(name) < 2 and len(name) > 20:
-        print("Failed! Your length of username must >2 and <20.")
-        return False
-    # check if whitespace take place at the first
-    # or the last at prefix or suffix
-    if name[0] == " " or name[-1] == " ":
-        print("Failed! Username can not start or end with whitespace.")
-        return False
-    # check if username has special character which is not allowed
-    if not(re.search(r'\W', name) is None):
-        print("Failed! Username has unallowed special characters.")
-        return False
-    # check if address is non-empty
-    if len(address) == 0:
-        print("Failed! The address can not be empty.")
-        return False
-    # check if address is alphanumeric-only
-    string = r"~!@#$%^&*()_+-*/<>,[].\/"
-    for i in string:
-        if i in address:
-            print("Failed! The address is not alphanumeric-only.")
-            return False
-    # check if postal code length is valid
-    if len(postalCode) != 6:
-        print("Failed! The postal length is invalid.")
-        return False
-    # check if postal code characters are vaild
-    if (not(postalCode[0].isupper()) or
-            not(postalCode[2].isupper()) or
-            not(postalCode[4].isupper())):
-        print("Failed! The postal characters is invalid.")
-        return False
-    if (not(postalCode[1].isdigit()) or
-            not(postalCode[3].isdigit()) or
-            not(postalCode[5].isdigit())):
-        print("Failed! The postal characters is invalid")
-        return False
-    user.username = name
-    user.shipping_address = address
-    user.postal_code = postalCode
-    return user

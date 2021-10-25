@@ -1,5 +1,5 @@
 import os
-from qbay.cli import login_page, regsiter_page
+from qbay.cli import *
 import sys
 sys.path.append("..")
 
@@ -13,10 +13,10 @@ def main():
                            '3 to update product, '
                            '4 to logout.')
             if choice == '1':
-                # Update Profile here
+                update_profile(user)
                 pass
             elif choice == '2':
-                # Create Product here
+                create_page(user.email)
                 pass
             elif choice == '3':
                 # Update Product here
