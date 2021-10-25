@@ -192,7 +192,7 @@ class Product(db.Model):
             self.price = price
         self.title = title
         self.description = description
-        self.last_modified_date = date.today()
+        self.last_modified_date = datetime.now()
         return self
 
 
