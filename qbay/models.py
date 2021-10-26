@@ -1,6 +1,6 @@
 from qbay import app
 from flask_sqlalchemy import SQLAlchemy
-from datetime import date, datetime
+from datetime import datetime
 import re
 
 '''
@@ -83,6 +83,7 @@ class User(db.Model):
         self.username = name
         self.shipping_address = address
         self.postal_code = postalCode
+        print("Success!")
         return self
 
 
@@ -185,7 +186,7 @@ class Product(db.Model):
             print("Failed! The Price has to be in range[10, 10000].")
             return None
         # Check if the price is marked higher.
-        if price < self.price:
+        if int(price) < self.price:
             print("Failed! Price can only increase.")
             return None
         if int(price) >= self.price:
@@ -193,6 +194,7 @@ class Product(db.Model):
         self.title = title
         self.description = description
         self.last_modified_date = datetime.now()
+        print("Success!")
         return self
 
 
@@ -258,7 +260,7 @@ def register(name, email, password):
     db.session.add(user)
     # actually save the user object
     db.session.commit()
-
+    print("Success!")
     return user
 
 
@@ -368,4 +370,5 @@ def create_product(title, description, last_modified_date, price, owner_email):
     db.session.add(product)
     # actually save the product object
     db.session.commit()
+    print("Success!")
     return product
