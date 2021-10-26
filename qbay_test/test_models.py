@@ -131,13 +131,8 @@ def test_r4_2_create_product():
     '''
 
     last_modified_date = datetime.now()
-    product = create_product("Pppppppppppppppppppppppppppppppppppp \
-        ppppppppppppppppppppppppppppppppppppppppp \
-        ppppppppppppppppppppppppppppppppppppppppp \
-        ppppppppppppppppppppppppppppppppppppppppp \
-        ppppppppppppppppppppppppppppppppppppppppp",
-        "from branAlienware and it is brand new",
-        last_modified_date, 100, "test10@test.com")
+    product = create_product("PP"*50, "from branAlienware and it is \
+      brand new", last_modified_date, 100, "test10@test.com")
     assert product is None
 
 
@@ -243,6 +238,6 @@ def test_r5_1_update_product():
     that it follows the same requirements as above.
     '''
     product_list = Product.query.filter_by(owner_email="test0@test.com").all()
-    update = product_list[0].updateProduct("", "from brand \
+    product_list[0].updateProduct("", "from brand \
     Alienware and it is brand new", 110)
     assert product_list[0] is not None
