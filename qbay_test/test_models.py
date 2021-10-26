@@ -21,6 +21,15 @@ def test_r1_1_user_register():
     assert register('u3', '', 'A123456a!') is False
 
 
+def test_r1_2_user_register():
+    '''
+    Testing R1-2:  A user is uniquely identified by his/her email address.
+    '''
+
+    assert register('uu', 'test6@test.com', 'A123456a!') is not None
+    assert register('uu', 'test7@test.com', 'A123456a!') is not None
+
+
 def test_r1_3_user_register():
     '''
     Testing R1-3: The email has to follow addr-spec defined in RFC 5322
@@ -74,8 +83,10 @@ def test_r2_1_user_login():
     assert user is None
 
 
-def test_r3_2_3_4_update_profile():
+def test_r3_1_2_3_4_update_profile():
     '''
+    Testing R3-1: A user is only able to update his/her user name, \
+    shipping_address, and postal_code.
     Testing R3-2: Shipping_address should be non-empty,
       alphanumeric-only, and no special characters such as !.
     Testing R3-3: Postal code has to be a valid Canadian postal code.
@@ -111,6 +122,34 @@ def test_r4_8_create_product():
     last_modified_date = datetime.now()
     product = create_product("PP1", "from brand Alienware and it is \
       brand new", last_modified_date, 1000, "17hl111@queensu.ca")
+    assert product is None
+
+
+def test_r4_2_create_product():
+    '''
+    R4-2: The title of the product is no longer than 80 characters.
+    '''
+
+    last_modified_date = datetime.now()
+    product = create_product("Pppppppppppppppppppppppppppppppppppp \
+        ppppppppppppppppppppppppppppppppppppppppp \
+        ppppppppppppppppppppppppppppppppppppppppp \
+        ppppppppppppppppppppppppppppppppppppppppp \
+        ppppppppppppppppppppppppppppppppppppppppp",
+        "from branAlienware and it is brand new",
+        last_modified_date, 100, "test10@test.com")
+    assert product is None
+
+
+def test_r4_3_create_product():
+    '''
+    R4-3: The description of the product can be arbitrary characters, \
+    with a minimum length of 20 characters and a maximum of 2000 characters.
+    '''
+
+    last_modified_date = datetime.now()
+    product = create_product("Ppppppp", "from brand Alienware and it is \
+      brand new", last_modified_date, 100, "test9@test.com")
     assert product is None
 
 
@@ -156,9 +195,23 @@ def test_r4_7_create_product():
     assert product is not None
 
 
+def test_r5_1_update_product():
+    '''
+    R5-1: One can update all attributes of the product, \
+    except owner_email and last_modified_date.
+    '''
+    product_list = Product.query.filter_by(owner_email="test0@test.com").all()
+    product_list[0].updateProduct("alienware11", "from brand Alienware \
+    and it is brand new", 50)
+    assert product_list[0].title == "PP1"
+    assert product_list[0].description == "from brand Alienware and it \
+      is brand new"
+    assert product_list[0].price == 50
+
+
 def test_r5_2_update_product():
     '''
-    R5-1: Price can be only increased but cannot be
+    R5-2: Price can be only increased but cannot be
      decreased
     '''
 
@@ -173,7 +226,7 @@ def test_r5_2_update_product():
 
 def test_r5_3_update_product():
     '''
-    R5-1:  last_modified_date should be updated
+    R5-3: last_modified_date should be updated \
         when the update operation is successful.
     '''
 
@@ -182,3 +235,14 @@ def test_r5_3_update_product():
     Alienware and it is brand new", 110)
     update_time = update.last_modified_date
     assert update_time == update.last_modified_date
+
+
+def test_r5_1_update_product():
+    '''
+    R5-4: When updating an attribute, one has to make sure\
+    that it follows the same requirements as above.
+    '''
+    product_list = Product.query.filter_by(owner_email="test0@test.com").all()
+    update = product_list[0].updateProduct("", "from brand \
+    Alienware and it is brand new", 110)
+    assert product_list[0] is not None
