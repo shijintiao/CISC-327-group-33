@@ -1,5 +1,5 @@
 from qbay.models import *
-from datetime import date, datetime
+from datetime import datetime
 
 
 def test_r1_7_user_register():

@@ -8,7 +8,7 @@ def main():
     user = None
     while True:
         if user is not None:
-            choice = input('\nWelcome. Please Enter 1 to update profile,'
+            choice = input('\nWelcome. Please Enter 1 to update profile, '
                            '2 to create product, '
                            '3 to update product, '
                            '4 to logout.')
@@ -17,7 +17,7 @@ def main():
             elif choice == '2':
                 create_page(user.email)
             elif choice == '3':
-                update_product()
+                update_product(user)
             elif choice == '4':
                 user = None
                 print("You have logged out! Press any key to continue!")
