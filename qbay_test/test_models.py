@@ -131,7 +131,7 @@ def test_r4_2_create_product():
     '''
 
     last_modified_date = datetime.now()
-    product = create_product("PP"*50, "from branAlienware and it is \
+    product = create_product("PP" * 50, "from branAlienware and it is \
       brand new", last_modified_date, 100, "test10@test.com")
     assert product is None
 
