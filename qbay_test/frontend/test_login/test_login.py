@@ -28,4 +28,4 @@ def test_login():
 
     print('outputs', output)
     assert output.strip() == expected_out.strip()
-test_login()
+    
