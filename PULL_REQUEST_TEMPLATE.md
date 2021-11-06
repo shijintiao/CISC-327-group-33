@@ -10,7 +10,7 @@ Assign √ for the section you want to choose
 - [ ] Update database (add new data class to database)
 - [ ] New feature (non-breaking change which adds functionality)
 - [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
-- [ ] This change requires a documentation update
+- [ ] Add new test cases. Test will be done by pytest (including integration test and explicit test)
 
 # Checklist:
 Assign √ for each statement
@@ -21,6 +21,6 @@ Assign √ for each statement
 - [ ] I have made corresponding changes to the documentation
 - [ ] My changes generate no new warnings
 - [ ] I have added tests that prove my fix is effective or that my feature works
-- [ ] New and existing unit tests pass locally with my changes
-- [ ] Any dependent changes have been merged and published in downstream modules
+- [ ] My code can pass pytest action (run "py -m pytest")
+- [ ] My code can pass flake8 action (run "py -m flake8")
 
