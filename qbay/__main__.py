@@ -27,7 +27,7 @@ def main():
                 '\nWelcome.Please Input 1 to login, 2 to register, 3 to quit:')
             selection = selection.strip()
             if selection == '1':
-                print('-----------------------------------------\n'
+                print('\n-----------------------------------------\n'
                       'Please enter your email'
                       'address and password here'
                       '\n-----------------------------------------\n')

@@ -25,6 +25,6 @@ def test_login():
         stdin=expected_in,
         capture_output=True,
     ).stdout.decode()
-
+    output = output.replace('\r', '')
     print('outputs', output)
     assert output.strip() == expected_out.strip()
