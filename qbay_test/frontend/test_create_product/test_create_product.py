@@ -5,6 +5,20 @@ import subprocess
 # get expected input/output file
 current_folder = Path(__file__).parent
 
+'''
+There are three test parts in the Create_product test which are the
+input test, output test and function test.
+test_create_product1 represents the test of input, test all possibilities
+of input(one test case for each category)
+test_create_product2 represents the test of output, test all possibilities
+of out(one test case for each category)
+test_create_product1 represents the test of function, to test the function,
+we need to make sure that the product has been created and added
+to the database successfully.
+To test that, we can try to update the product information to see
+if the system can find the product.
+'''
+
 
 def test_create_product_1():
     """capsys -- object created by pytest to
