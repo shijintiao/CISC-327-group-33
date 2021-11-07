@@ -10,7 +10,7 @@ current_folder = Path(__file__).parent
 expected_in = open(current_folder.joinpath(
     'test_login.in'))
 expected_out = open(current_folder.joinpath(
-    'test_login.out')).read()
+    'test_login.out')).read().replace('\n', '')
 
 print(expected_out)
 
@@ -24,7 +24,7 @@ def test_login():
         ['python', '-m', 'qbay'],
         stdin=expected_in,
         capture_output=True,
-    ).stdout.decode()
+    ).stdout.decode().replace('\r', '').replace('\n', '')
 
     print('outputs', output)
     assert output.strip() == expected_out.strip()
