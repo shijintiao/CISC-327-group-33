@@ -1,0 +1,17 @@
+1
+test0@test.com
+A123456a!
+2
+ pencil
+a
+1
+2
+pencil
+this time, creat product should be successfully and the product pencil will be create_product
+15
+2
+pencil
+this time should be failed because title already existed
+15
+4
+3

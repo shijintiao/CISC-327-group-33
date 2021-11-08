@@ -20,8 +20,7 @@ def main():
                 update_product(user)
             elif choice == '4':
                 user = None
-                print("You have logged out! Press any key to continue!")
-                os.system("pause")
+                print("You have logged out!")
         else:
             selection = input(
                 '\nWelcome.Please Input 1 to login, 2 to register, 3 to quit:')
