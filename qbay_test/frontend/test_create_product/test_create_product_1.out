@@ -1,6 +1,7 @@
 
 
-Welcome.Please Input 1 to login, 2 to register, 3 to quit:-----------------------------------------
+Welcome.Please Input 1 to login, 2 to register, 3 to quit:
+-----------------------------------------
 
 Please enter your emailaddress and password here
 
@@ -16,7 +17,8 @@ welcome u00
 
 
 
-Welcome. Please Enter 1 to update profile, 2 to create product, 3 to update product, 4 to logout.Please enter a title.
+Welcome. Please Enter 1 to update profile, 2 to create product, 3 to update product, 4 to logout.
+Please enter a title.
 
 Please enter a description for your product
 
@@ -26,7 +28,8 @@ Failed! Title can not start or end with whitespace.
 
 
 
-Welcome. Please Enter 1 to update profile, 2 to create product, 3 to update product, 4 to logout.Please enter a title.
+Welcome. Please Enter 1 to update profile, 2 to create product, 3 to update product, 4 to logout.
+Please enter a title.
 
 Please enter a description for your product
 

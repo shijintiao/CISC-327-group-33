@@ -24,7 +24,7 @@ def regsiter_page():
 
 
 def create_page(email):
-    title = input("Please enter a title.\n")
+    title = input("\nPlease enter a title.\n")
     description = input("Please enter a description for your product\n")
     price = input("Please enter the price\n")
     pro = create_product(title, description, datetime.now(), price, email)
@@ -32,7 +32,7 @@ def create_page(email):
 
 
 def update_profile(user):
-    name = input("Please enter a new name\n")
+    name = input("\nPlease enter a new name\n")
     address = input("Please enter a new address\n")
     postalCode = input("Please enter a new postal code\n")
     user = user.updateProfile(name, address, postalCode)
