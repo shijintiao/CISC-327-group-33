@@ -43,8 +43,8 @@ class User(db.Model):
                 return true if update sucess
         '''
         # check if username meets the length requirement
-        if len(name) < 2 and len(name) > 20:
-            print("Failed! Your length of username must >2 and <20.")
+        if len(name) < 2 or len(name) > 20:
+            print("Failed! Your length of username must >= 2 and <= 20.")
             return False
         # check if whitespace take place at the first
         # or the last at prefix or suffix
@@ -237,8 +237,8 @@ def register(name, email, password):
         print("Failed! Your password must have specail characters.")
         return False
     # check if username meets the length requirement
-    if len(name) < 2 and len(name) > 20:
-        print("Failed! Your length of username must >2 and <20.")
+    if len(name) < 2 or len(name) > 20:
+        print("Failed! Your length of username must >= 2 and <= 20.")
         return False
     # check if whitespace take place at the first
     # or the last at prefix or suffix

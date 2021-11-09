@@ -2,6 +2,15 @@ from qbay.models import *
 from datetime import datetime
 
 
+def setup_module(module):
+    pass
+
+
+def teardown_module(module):
+    print("Close database!")
+    db.session.close()
+
+
 def test_r1_7_user_register():
     '''
     Testing R1-7: If the email has been used, the operation failed.

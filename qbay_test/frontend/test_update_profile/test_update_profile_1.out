@@ -1,53 +1,33 @@
 Welcome.Please Input 1 to login, 2 to register, 3 to quit:
 -----------------------------------------
-
 Please enter your emailaddress and password here
-
 -----------------------------------------
-
-
-
 Please input email:
-
 Please input password:
 
 welcome u00
-
-
+Welcome. Please Enter 1 to update profile, 2 to create product, 3 to update product, 4 to logout.
+Please enter a new name
+Please enter a new address
+Please enter a new postal code
+Failed! Your length of username must >= 2 and <= 20.
 
 Welcome. Please Enter 1 to update profile, 2 to create product, 3 to update product, 4 to logout.
-Please enter a title.
-
-Please enter a description for your product
-
-Please enter the price
-
-Failed! Title can not start or end with whitespace.
-
-
+Please enter a new name
+Please enter a new address
+Please enter a new postal code
+Failed! The address is not alphanumeric-only.
 
 Welcome. Please Enter 1 to update profile, 2 to create product, 3 to update product, 4 to logout.
-Please enter a title.
+Please enter a new name
+Please enter a new address
+Please enter a new postal code
+Failed! The postal length is invalid.
 
-Please enter a description for your product
-
-Please enter the price
-
+Welcome. Please Enter 1 to update profile, 2 to create product, 3 to update product, 4 to logout.
+Please enter a new name
+Please enter a new address
+Please enter a new postal code
 Success!
 
-
-
 Welcome. Please Enter 1 to update profile, 2 to create product, 3 to update product, 4 to logout.
-Please enter a title.
-
-Please enter a description for your product
-
-Please enter the price
-
-Failed! This title exist already.
-
-Welcome. Please Enter 1 to update profile, 2 to create product, 3 to update product, 4 to logout.
-
-You have logged out!
-
-Welcome.Please Input 1 to login, 2 to register, 3 to quit:
