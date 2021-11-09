@@ -30,9 +30,9 @@ def main():
             else:
                 if selection == '1':
                     print('\n-----------------------------------------\n'
-                        'Please enter your email'
-                        'address and password here'
-                        '\n-----------------------------------------\n')
+                          'Please enter your email'
+                          'address and password here'
+                          '\n-----------------------------------------\n')
                     user = login_page()
                     if user is False:
                         user = None
@@ -44,15 +44,15 @@ def main():
                         continue
                 elif selection == '2':
                     print('-------------------------------------------------'
-                        '------------------------------------\n'
-                        'Please read the follow requirements carefully!'
-                        '\n-------------------------------------------------'
-                        '------------------------------------\n'
-                        '1.Your email address must follow the '
-                        'RFC5322 standard.\n'
-                        '2.Your password length must longer than 6 digits.\n'
-                        '3.Your password must include both '
-                        'upper letter and lower letters.')
+                          '------------------------------------\n'
+                          'Please read the follow requirements carefully!'
+                          '\n-------------------------------------------------'
+                          '------------------------------------\n'
+                          '1.Your email address must follow the '
+                          'RFC5322 standard.\n'
+                          '2.Your password length must longer than 6 digits.\n'
+                          '3.Your password must include both '
+                          'upper letter and lower letters.')
                     reg_user = regsiter_page()
                     if reg_user is False:
                         continue
