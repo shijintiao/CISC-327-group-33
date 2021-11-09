@@ -1,0 +1,57 @@
+Welcome.Please Input 1 to login, 2 to register, 3 to quit:
+-----------------------------------------
+Please enter your emailaddress and password here
+-----------------------------------------
+Please input email:
+Please input password:
+
+welcome u00
+Welcome. Please Enter 1 to update profile, 2 to create product, 3 to update product, 4 to logout.
+Please enter a new name
+Please enter a new address
+Please enter a new postal code
+Failed! Your length of username must >= 2 and <= 20.
+
+Welcome. Please Enter 1 to update profile, 2 to create product, 3 to update product, 4 to logout.
+Please enter a new name
+Please enter a new address
+Please enter a new postal code
+Failed! Username can not start or end with whitespace.
+
+Welcome. Please Enter 1 to update profile, 2 to create product, 3 to update product, 4 to logout.
+Please enter a new name
+Please enter a new address
+Please enter a new postal code
+Failed! Username has unallowed special characters.
+
+Welcome. Please Enter 1 to update profile, 2 to create product, 3 to update product, 4 to logout.
+Please enter a new name
+Please enter a new address
+Please enter a new postal code
+Failed! The address can not be empty.
+
+Welcome. Please Enter 1 to update profile, 2 to create product, 3 to update product, 4 to logout.
+Please enter a new name
+Please enter a new address
+Please enter a new postal code
+Failed! The address is not alphanumeric-only.
+
+Welcome. Please Enter 1 to update profile, 2 to create product, 3 to update product, 4 to logout.
+Please enter a new name
+Please enter a new address
+Please enter a new postal code
+Failed! The postal length is invalid.
+
+Welcome. Please Enter 1 to update profile, 2 to create product, 3 to update product, 4 to logout.
+Please enter a new name
+Please enter a new address
+Please enter a new postal code
+Failed! The postal characters is invalid.
+
+Welcome. Please Enter 1 to update profile, 2 to create product, 3 to update product, 4 to logout.
+Please enter a new name
+Please enter a new address
+Please enter a new postal code
+Success!
+
+Welcome. Please Enter 1 to update profile, 2 to create product, 3 to update product, 4 to logout.

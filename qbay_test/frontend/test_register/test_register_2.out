@@ -1,0 +1,141 @@
+Welcome.Please Input 1 to login, 2 to register, 3 to quit:
+
+-------------------------------------------------------------------------------------
+Please read the follow requirements carefully!
+-------------------------------------------------------------------------------------
+1.Your email address must follow the RFC5322 standard.
+2.Your password length must longer than 6 digits.
+3.Your password must include both upper letter and lower letters.
+Please input your name:
+Please input email:
+Please input password:
+Please input the password again:
+Failed! Passwords do not match.
+
+Welcome.Please Input 1 to login, 2 to register, 3 to quit:
+
+-------------------------------------------------------------------------------------
+Please read the follow requirements carefully!
+-------------------------------------------------------------------------------------
+1.Your email address must follow the RFC5322 standard.
+2.Your password length must longer than 6 digits.
+3.Your password must include both upper letter and lower letters.
+Please input your name:
+Please input email:
+Please input password:
+Please input the password again:
+Failed! This emali has been already used.
+
+Welcome.Please Input 1 to login, 2 to register, 3 to quit:
+
+-------------------------------------------------------------------------------------
+Please read the follow requirements carefully!
+-------------------------------------------------------------------------------------
+1.Your email address must follow the RFC5322 standard.
+2.Your password length must longer than 6 digits.
+3.Your password must include both upper letter and lower letters.
+Please input your name:
+Please input email:
+Please input password:
+Please input the password again:
+Failed! Your email format is incorrect.
+
+Welcome.Please Input 1 to login, 2 to register, 3 to quit:
+
+-------------------------------------------------------------------------------------
+Please read the follow requirements carefully!
+-------------------------------------------------------------------------------------
+1.Your email address must follow the RFC5322 standard.
+2.Your password length must longer than 6 digits.
+3.Your password must include both upper letter and lower letters.
+Please input your name:
+Please input email:
+Please input password:
+Please input the password again:
+Failed! Your password is too short.
+
+Welcome.Please Input 1 to login, 2 to register, 3 to quit:
+
+-------------------------------------------------------------------------------------
+Please read the follow requirements carefully!
+-------------------------------------------------------------------------------------
+1.Your email address must follow the RFC5322 standard.
+2.Your password length must longer than 6 digits.
+3.Your password must include both upper letter and lower letters.
+Please input your name:
+Please input email:
+Please input password:
+Please input the password again:
+Failed! Your password must have both upper and lower letters.
+
+Welcome.Please Input 1 to login, 2 to register, 3 to quit:
+
+-------------------------------------------------------------------------------------
+Please read the follow requirements carefully!
+-------------------------------------------------------------------------------------
+1.Your email address must follow the RFC5322 standard.
+2.Your password length must longer than 6 digits.
+3.Your password must include both upper letter and lower letters.
+Please input your name:
+Please input email:
+Please input password:
+Please input the password again:
+Failed! Your password must have specail characters.
+
+Welcome.Please Input 1 to login, 2 to register, 3 to quit:
+
+-------------------------------------------------------------------------------------
+Please read the follow requirements carefully!
+-------------------------------------------------------------------------------------
+1.Your email address must follow the RFC5322 standard.
+2.Your password length must longer than 6 digits.
+3.Your password must include both upper letter and lower letters.
+Please input your name:
+Please input email:
+Please input password:
+Please input the password again:
+Failed! Your length of username must >= 2 and <= 20.
+
+Welcome.Please Input 1 to login, 2 to register, 3 to quit:
+
+-------------------------------------------------------------------------------------
+Please read the follow requirements carefully!
+-------------------------------------------------------------------------------------
+1.Your email address must follow the RFC5322 standard.
+2.Your password length must longer than 6 digits.
+3.Your password must include both upper letter and lower letters.
+Please input your name:
+Please input email:
+Please input password:
+Please input the password again:
+Failed! Username can not start or end with whitespace.
+
+Welcome.Please Input 1 to login, 2 to register, 3 to quit:
+
+-------------------------------------------------------------------------------------
+Please read the follow requirements carefully!
+-------------------------------------------------------------------------------------
+1.Your email address must follow the RFC5322 standard.
+2.Your password length must longer than 6 digits.
+3.Your password must include both upper letter and lower letters.
+Please input your name:
+Please input email:
+Please input password:
+Please input the password again:
+Failed! Username has special character which is not allowed.
+
+Welcome.Please Input 1 to login, 2 to register, 3 to quit:
+
+-------------------------------------------------------------------------------------
+Please read the follow requirements carefully!
+-------------------------------------------------------------------------------------
+1.Your email address must follow the RFC5322 standard.
+2.Your password length must longer than 6 digits.
+3.Your password must include both upper letter and lower letters.
+Please input your name:
+Please input email:
+Please input password:
+Please input the password again:
+Success!
+Congratulation! Your account has been created!
+Welcome.Please Input 1 to login, 2 to register, 3 to quit:
