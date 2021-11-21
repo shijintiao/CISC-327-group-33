@@ -3,7 +3,7 @@ from datetime import datetime
 
 
 def test_create_product_injection_title():
-    f = open("qbay_test/injection/injection_payload.txt", "r")
+    f = open ("qbay_test/injection/injection_payload.txt", "r")
     line = f.readline()
     cnt_succ = 0
     cnt_all = 0
@@ -19,7 +19,7 @@ def test_create_product_injection_title():
 
 
 def test_create_product_injection_description():
-    f = open("qbay_test/injection/injection_payload.txt", "r")
+    f = open ("qbay_test/injection/injection_payload.txt", "r")
     line = f.readline()
     cnt_succ = 0
     cnt_all = 0
@@ -36,7 +36,7 @@ def test_create_product_injection_description():
 
 
 def test_create_product_injection_price():
-    f = open("qbay_test/injection/injection_payload.txt", "r")
+    f = open ("qbay_test/injection/injection_payload.txt", "r")
     line = f.readline()
     cnt_succ = 0
     cnt_all = 0
@@ -53,7 +53,7 @@ def test_create_product_injection_price():
 
 
 def test_create_product_injection_owner():
-    f = open("qbay_test/injection/injection_payload.txt", "r")
+    f = open ("qbay_test/injection/injection_payload.txt", "r")
     line = f.readline()
     cnt_succ = 0
     cnt_all = 0
