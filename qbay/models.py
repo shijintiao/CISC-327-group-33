@@ -314,12 +314,7 @@ def create_product(title, description, last_modified_date, price, owner_email):
     '''
     D1 = datetime(2021, 1, 2)
     D2 = datetime(2025, 1, 2)
-    if isinstance(price, str):
-        if not price.isnumeric():
-            return None
-        price = int(price)
-    elif not isinstance(price, int):
-        return None
+    price = int(price)
     # Check if the title is in the right format
     if (title.startswith(' ') or
             title.endswith(' ')):
