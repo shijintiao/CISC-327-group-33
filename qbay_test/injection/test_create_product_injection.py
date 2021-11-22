@@ -10,8 +10,8 @@ def test_create_product_injection_title():
     while line:
         print("Testing content: {}".format(line))
         last_modified_date = datetime.now()
-        r = create_product("PP1", line, last_modified_date,
-            "100", "test0@test.com")
+        r = create_product("PP1", line, last_modified_date, " \
+        100", "test0@test.com")
         if r:
             cnt_succ += 1
         cnt_all += 1
