@@ -10,12 +10,14 @@ def test_create_product_injection_title():
     while line:
         print("Testing content: {}".format(line))
         last_modified_date = datetime.now()
-        r = create_product("PP1", line, last_modified_date, "100", "test0@test.com")
+        r = create_product("PP1", line, last_modified_date, " \
+        100", "test0@test.com")
         if r:
             cnt_succ += 1
         cnt_all += 1
         line = f.readline()
-    print("============== Succ count: {}/{} ==============".format(cnt_succ, cnt_all))
+    message = "============== Succ count: {}/{} =============="
+    print(message.format(cnt_succ, cnt_all))
 
 
 def test_create_product_injection_description():
@@ -32,7 +34,8 @@ def test_create_product_injection_description():
             cnt_succ += 1
         cnt_all += 1
         line = f.readline()
-    print("============== Succ count: {}/{} ==============".format(cnt_succ, cnt_all))
+    message = "============== Succ count: {}/{} =============="
+    print(message.format(cnt_succ, cnt_all))
 
 
 def test_create_product_injection_price():
@@ -49,7 +52,8 @@ def test_create_product_injection_price():
             cnt_succ += 1
         cnt_all += 1
         line = f.readline()
-    print("============== Succ count: {}/{} ==============".format(cnt_succ, cnt_all))
+    message = "============== Succ count: {}/{} =============="
+    print(message.format(cnt_succ, cnt_all))
 
 
 def test_create_product_injection_owner():
@@ -66,4 +70,5 @@ def test_create_product_injection_owner():
             cnt_succ += 1
         cnt_all += 1
         line = f.readline()
-    print("============== Succ count: {}/{} ==============".format(cnt_succ, cnt_all))
+    message = "============== Succ count: {}/{} =============="
+    print(message.format(cnt_succ, cnt_all))
