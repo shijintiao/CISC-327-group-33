@@ -131,3 +131,4 @@ dmypy.json
 # Backend database
 *.sqlite
 *.sqlite-journal
+mysql_data
