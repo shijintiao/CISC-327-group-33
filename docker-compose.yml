@@ -1,7 +1,7 @@
 version: "2"
 services:
   qbay-cli:
-    image: your_docker_hub_name/your_docker_hub_repo_name:version_info
+    image: shijintiao/qbay:v1
     stdin_open: true # docker run -i
     tty: true        # docker run -t
     depends_on:
