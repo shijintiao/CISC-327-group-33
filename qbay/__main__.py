@@ -8,10 +8,15 @@ def main():
     user = None
     while True:
         if user is not None:
-            choice = input('\nWelcome. Please Enter 1 to update profile, '
-                           '2 to create product, '
-                           '3 to update product, '
-                           '4 to logout.')
+            choice = input('\nYou have %d balance in your account.\n' 
+                           'Please Select options\n'
+                           '1 to update profile\n'
+                           '2 to create a product\n'
+                           '3 to check your on sale products\n'
+                           '4 to browse others\' on sale products.\n'
+                           '5 to check past orders'
+                           '6 to log out:'
+                           % (user.balance))
             if choice == '1':
                 update_profile(user)
             elif choice == '2':
@@ -19,6 +24,16 @@ def main():
             elif choice == '3':
                 update_product(user)
             elif choice == '4':
+                # To be filled
+                # User can browse others product
+                # Can purchase them if they have enough balance
+                pass
+            elif choice == '5':
+                # Check past orders
+                # User can see what he bought and sold
+                # Filter by transactions
+                pass
+            elif choice == '6':
                 user = None
                 print("You have logged out!")
         else:
@@ -29,10 +44,6 @@ def main():
                 print('Please enter a number!')
             else:
                 if selection == '1':
-                    print('\n-----------------------------------------\n'
-                          'Please enter your email'
-                          'address and password here'
-                          '\n-----------------------------------------\n')
                     user = login_page()
                     if user is False:
                         user = None
@@ -40,24 +51,12 @@ def main():
                     elif user is None:
                         continue
                     else:
-                        print(f'welcome {user.username}')
+                        print(f'\nWelcome {user.username}')
                         continue
                 elif selection == '2':
-                    print('-------------------------------------------------'
-                          '------------------------------------\n'
-                          'Please read the follow requirements carefully!'
-                          '\n-------------------------------------------------'
-                          '------------------------------------\n'
-                          '1.Your email address must follow the '
-                          'RFC5322 standard.\n'
-                          '2.Your password length must longer than 6 digits.\n'
-                          '3.Your password must include both '
-                          'upper letter and lower letters.')
                     reg_user = regsiter_page()
                     if reg_user is False:
                         continue
-                    else:
-                        print('Congratulation! Your account has been created!')
                 elif selection == '3':
                     break
                 else:
