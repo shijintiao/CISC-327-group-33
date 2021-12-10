@@ -76,7 +76,8 @@ def update_product(user):
         if product_number not in range(0, len(product_list)):
             print('The number entered is out of range!')
             return
-    print('\nID:%d\nTitle:%s\nPrice:%d\nDescription:%s\nLast modified Date:%s\n' 
+    print('\nID:%d\nTitle:%s\nPrice:%d\nDescription:%s\n'
+            'Last modified Date:%s\n' 
         % (product_list[i].id_incremental, product_list[i].title,
         product_list[i].price, product_list[i].description,
         product_list[i].last_modified_date))
@@ -151,8 +152,8 @@ def purchase(product, user):
 
 
 def transact(product, user):
-    Transaction(product_id = product.id_incremental, price = product.price,
-                date = datetime, buyer = user, seller = product.owner_email)
+    Transaction(product_id=product.id_incremental, price=product.price,
+                date=datetime, buyer=user, seller=product.owner_email)
     return
 
 
@@ -161,8 +162,8 @@ def writeReview(user, product):
     soc = input("Please give a score from 1 to 10\n")
     if soc.isdigit():
         if int(soc) <= 10 and int(soc) >= 1:
-            Review(user_email = user.email, score = int(soc),
-                    product_id = product.id_incremental, review = rev)
+            Review(user_email=user.email, score=int(soc),
+                    product_id=product.id_incremental, review=rev)
     else:
         print("Please enter valid input.")
         writeReview(user, product)
