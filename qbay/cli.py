@@ -29,9 +29,9 @@ def regsiter_page():
     name = input('Please input your name:\n')
     email = input('Please input email:\n')
     password = input('Please input password:')
-    password_twice = input('Please input the password again:\n')
+    password_twice = input('Please input the password again:')
     if password != password_twice:
-        print('Failed! Passwords do not match.\n')
+        print('\nFailed! Passwords do not match.\n')
         return False
     res = register(name, email, password)
     return res
@@ -55,26 +55,40 @@ def update_profile(user):
 
 def update_product(user):
     product_list = Product.query.filter_by(owner_email=user.email).all()
-    print(len(product_list), 'product found!')
-    product_input = input('Which one you want to update '
-                          '(Starts from 1):')
+    print('\n%d product found!\n' % len(product_list))
+    print('Your on sale product(s) list:')
+    for i in range(len(product_list)):
+        print('ID:%d Title:%-10s Price:%d' % (product_list[i].id_incremental, 
+        product_list[i].title, product_list[i].price))
+    product_input = input('\nSelect one you want to see details'
+                          '(Starts from 1):'
+                          '\nor Type 0 to go back to previous page')
     if not product_input.isnumeric():
         print('You should enter a number!')
+        return
+    elif product_input == 0:
         return
     else:
         product_number = int(product_input) - 1
         if product_number not in range(0, len(product_list)):
             print('The number entered is out of range!')
             return
+    print('\nID:%d\nTitle:%s\nPrice:%d\nDescription:%s\nLast modified Date:%s\n' 
+        % (product_list[i].id_incremental, product_list[i].title,
+        product_list[i].price, product_list[i].description,
+        product_list[i].last_modified_date))
     if product_list[product_number] is not None:
-        choice = int(input('Type 1 to update product title.\n'
+        choice = int(input('\nType 1 to update product title.\n'
                            'Type 2 to update product description.\n'
                            'Type 3 to update product price.\n'
-                           'Type 4 to update all product parameters.\n'))
-        if 1 > choice or choice > 4:
+                           'Type 4 to update all product parameters.\n'
+                           'Type 5 to to go back to previous page'))
+        if 1 > choice or choice > 5:
             print('The choice is not in the list, please try again!')
             return
         else:
+            if choice == 5:
+                return
             if choice == 1:
                 new_title = input('What is the new title?')
                 product_list[product_number].updateProduct(
