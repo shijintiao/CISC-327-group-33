@@ -5,6 +5,10 @@ sys.path.append("..")
 
 
 def login_page():
+    print('\n-----------------------------------------\n'
+          'Please enter your email'
+          'address and password here'
+          '\n-----------------------------------------\n')
     email = input('Please input email:\n')
     password = input('Please input password:\n')
     res = login(email, password)
@@ -12,6 +16,16 @@ def login_page():
 
 
 def regsiter_page():
+    print('-------------------------------------------------'
+          '------------------------------------\n'
+          'Please read the follow requirements carefully!'
+          '\n-------------------------------------------------'
+          '------------------------------------\n'
+          '1.Your email address must follow the '
+          'RFC5322 standard.\n'
+          '2.Your password length must longer than 6 digits.\n'
+          '3.Your password must include both '
+          'upper letter and lower letters.')
     name = input('Please input your name:\n')
     email = input('Please input email:\n')
     password = input('Please input password:')
