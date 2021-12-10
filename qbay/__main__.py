@@ -14,7 +14,8 @@ def main():
                            '2 to create a product\n'
                            '3 to check your on sale products\n'
                            '4 to browse others\' on sale products.\n'
-                           '5 to log out:'
+                           '5 to check past orders'
+                           '6 to log out:'
                            % (user.balance))
             if choice == '1':
                 update_profile(user)
@@ -24,8 +25,15 @@ def main():
                 update_product(user)
             elif choice == '4':
                 # To be filled
+                # User can browse others product
+                # Can purchase them if they have enough balance
                 pass
             elif choice == '5':
+                # Check past orders
+                # User can see what he bought and sold
+                # Filter by transactions
+                pass
+            elif choice == '6':
                 user = None
                 print("You have logged out!")
         else:
