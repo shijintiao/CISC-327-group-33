@@ -78,4 +78,3 @@ def test_login_3():
 
     print('outputs', output)
     assert output.strip() == expected_out.strip()
-    

@@ -35,7 +35,7 @@ class User(db.Model):
     def updateProfile(self, name, address, postalCode):
         '''
         Update user profile
-            Parameter：
+            Parameter:
                 name(string):       new user name
                 address(string):    new address
                 postalCode(string): new postal code
@@ -96,17 +96,18 @@ class Transaction(db.Model):
         db.Integer, primary_key=True,
         autoincrement=True,
         nullable=False)
-    # User's email address.
-    # It could be not unique since
-    # a same user can have more than one transactions.
-    user_email = db.Column(
-        db.String(50), nullable=False)
     product_id = db.Column(
         db.String(50), nullable=False)
     price = db.Column(
         db.Integer, nullable=False)
     date = db.Column(
         db.String(20), nullable=False)
+    # Buyer is identified by email address
+    buyer = db.Column(
+        db.String(120), nullable=False)
+    # Seller is identified by email address
+    seller = db.Column(
+        db.String(120), nullable=False)
 
     def __repr__(self):
         return '<Transaction %r>' % self.username
@@ -117,7 +118,7 @@ class Review(db.Model):
     # It is a self-increment attribute.
     # Every time implement an object,
     # it will be assigned an ID automatically
-    Id_incremental = db.Column(
+    id_incremental = db.Column(
         db.Integer, primary_key=True,
         autoincrement=True,
         nullable=False)
@@ -125,6 +126,8 @@ class Review(db.Model):
         db.String(50), nullable=False)
     score = db.Column(
         db.String(5), nullable=False)
+    product_id = db.Column(
+        db.Integer, nullable=False)
     # User's review.
     # It could be empty since
     # same user do not leave any text review.
@@ -151,6 +154,9 @@ class Product(db.Model):
         db.String(20), nullable=False)
     owner_email = db.Column(
         db.String(50), nullable=False)
+    # 0 stands for on sale, 1 stands for owned
+    status = db.Column(
+        db.Integer, nullable=False)
 
     def updateProduct(self, title, description, price):
         '''
@@ -194,7 +200,11 @@ class Product(db.Model):
         self.title = title
         self.description = description
         self.last_modified_date = datetime.now()
-        print("Success!")
+        print("Successfuly update %s!" % self.title)
+        return self
+
+    def update_status(self, status):
+        self.status = status
         return self
 
 
@@ -370,10 +380,26 @@ def create_product(title, description, last_modified_date, price, owner_email):
     product = Product(
         title=title, description=description,
         owner_email=owner_email, price=price,
-        last_modified_date=last_modified_date)
+        last_modified_date=last_modified_date,
+        status=0)
     # add it to the current database session
     db.session.add(product)
     # actually save the product object
     db.session.commit()
-    print("Success!")
+    print("Successfully create %s!" % title)
     return product
+
+
+def create_transcation(buyer, seller, product_id, price, date):
+    # create a new transation
+    transaction = Transaction(
+        buyer=buyer, seller=seller,
+        product_id=product_id, price=price,
+        date=date)
+    # add it to the current database session
+    db.session.add(transaction)
+    # actually save the product object
+    db.session.commit()
+    print("Transaction NO.%d complete!" % transaction.id_incremental)
+    print("Time Stamp: %s" % datetime.now())
+    return transaction
