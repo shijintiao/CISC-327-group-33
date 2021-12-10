@@ -1,4 +1,7 @@
 from datetime import datetime
+from flask_sqlalchemy import BaseQuery
+
+from sqlalchemy.orm import query
 from qbay.models import *
 import sys
 sys.path.append("..")
@@ -120,3 +123,43 @@ def update_product(user):
     else:
         print("No result found by this email!")
         return
+
+def checkProduct(user):
+    print(Product.query.all())
+    print("Now you own " + str(user.balance) + " balance.")
+    num = input("Which item would you like to purchase? type the ID"
+                " or press letter to back.\n")
+    if num.isdigit():
+        purchase(Product.query.get(int(num)), user)
+    else:
+        return
+
+def purchase(product, user):
+    if user.balance >= product.price:
+        transact(product, user)
+        print("Purchase success!")
+        print("Please give the review.")
+        writeReview(user,product)
+        product.update_status(1)
+        print("Now you left " + str(user.balance) + " balance.")
+        return
+    else:
+        print("Not enough money")
+        return
+
+def transact(product, user):
+    Transaction(product_id = product.id_incremental, price = product.price,
+                date = datetime, buyer = user, seller = product.owner_email)
+    return
+
+def writeReview(user, product):
+    rev = input()
+    soc = input("Please give a score from 1 to 10\n")
+    if soc.isdigit():
+        if int(soc) <= 10 and int(soc) >= 1:
+            Review(user_email = user.email, score = int(soc), 
+                    product_id = product.id_incremental, review = rev)
+    else:
+        print("Please enter valid input.")
+        writeReview(user, product)
+    return

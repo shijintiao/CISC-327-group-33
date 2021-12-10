@@ -14,7 +14,7 @@ def main():
                            '2 to create a product\n'
                            '3 to check your on sale products\n'
                            '4 to browse others\' on sale products.\n'
-                           '5 to check past orders'
+                           '5 to check past orders\n'
                            '6 to log out:'
                            % (user.balance))
             if choice == '1':
@@ -24,9 +24,7 @@ def main():
             elif choice == '3':
                 update_product(user)
             elif choice == '4':
-                # To be filled
-                # User can browse others product
-                # Can purchase them if they have enough balance
+                checkProduct(user)
                 pass
             elif choice == '5':
                 # Check past orders
