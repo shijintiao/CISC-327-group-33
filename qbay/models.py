@@ -157,7 +157,7 @@ class Product(db.Model):
     # 0 stands for on sale, 1 stands for owned
     status = db.Column(
         db.Integer, nullable=False)
-    
+
     def __repr__(self):
         return '<Product %r>' % self.id_incremental
 

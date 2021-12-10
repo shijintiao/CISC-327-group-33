@@ -8,7 +8,7 @@ def main():
     user = None
     while True:
         if user is not None:
-            choice = input('\nYou have %d balance in your account.\n' 
+            choice = input('\nYou have %d balance in your account.\n'
                            'Please Select options\n'
                            '1 to update profile\n'
                            '2 to create a product\n'
