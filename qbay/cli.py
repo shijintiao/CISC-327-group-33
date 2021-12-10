@@ -62,7 +62,7 @@ def update_product(user):
     print('Your on sale product(s) list:')
     for i in range(len(product_list)):
         print('ID:%d Title:%-10s Price:%d' % (product_list[i].id_incremental,
-        product_list[i].title, product_list[i].price))
+              product_list[i].title, product_list[i].price))
     product_input = input('\nSelect one you want to see details'
                           '(Starts from 1):'
                           '\nor Type 0 to go back to previous page')
@@ -77,10 +77,10 @@ def update_product(user):
             print('The number entered is out of range!')
             return
     print('\nID:%d\nTitle:%s\nPrice:%d\nDescription:%s\n'
-            'Last modified Date:%s\n' 
-        % (product_list[i].id_incremental, product_list[i].title,
-        product_list[i].price, product_list[i].description,
-        product_list[i].last_modified_date))
+          'Last modified Date:%s\n' 
+          % (product_list[i].id_incremental, product_list[i].title,
+          product_list[i].price, product_list[i].description,
+          product_list[i].last_modified_date))
     if product_list[product_number] is not None:
         choice = int(input('\nType 1 to update product title.\n'
                            'Type 2 to update product description.\n'
@@ -163,7 +163,7 @@ def writeReview(user, product):
     if soc.isdigit():
         if int(soc) <= 10 and int(soc) >= 1:
             Review(user_email=user.email, score=int(soc),
-                    product_id=product.id_incremental, review=rev)
+                   product_id=product.id_incremental, review=rev)
     else:
         print("Please enter valid input.")
         writeReview(user, product)
