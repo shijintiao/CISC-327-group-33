@@ -58,8 +58,8 @@ def update_product(user):
     print('\n%d product found!\n' % len(product_list))
     print('Your on sale product(s) list:')
     for i in range(len(product_list)):
-        print('ID:%d Title:%-10s Price:%d' % (product_list[i].id_incremental, 
-        product_list[i].title, product_list[i].price))
+        print('ID:%d Title:%-10s Price:%d' % (product_list[i].id_incremental,
+            product_list[i].title, product_list[i].price))
     product_input = input('\nSelect one you want to see details'
                           '(Starts from 1):'
                           '\nor Type 0 to go back to previous page')
@@ -73,7 +73,8 @@ def update_product(user):
         if product_number not in range(0, len(product_list)):
             print('The number entered is out of range!')
             return
-    print('\nID:%d\nTitle:%s\nPrice:%d\nDescription:%s\nLast modified Date:%s\n' 
+    print(
+        '\nID:%d\nTitle:%s\nPrice:%d\nDescription:%s\nLast modified Date:%s\n'
         % (product_list[i].id_incremental, product_list[i].title,
         product_list[i].price, product_list[i].description,
         product_list[i].last_modified_date))
