@@ -59,7 +59,7 @@ def update_product(user):
     print('Your on sale product(s) list:')
     for i in range(len(product_list)):
         print('ID:%d Title:%-10s Price:%d' % (product_list[i].id_incremental,
-            product_list[i].title, product_list[i].price))
+              product_list[i].title, product_list[i].price))
     product_input = input('\nSelect one you want to see details'
                           '(Starts from 1):'
                           '\nor Type 0 to go back to previous page')
@@ -76,8 +76,8 @@ def update_product(user):
     print(
         '\nID:%d\nTitle:%s\nPrice:%d\nDescription:%s\nLast modified Date:%s\n'
         % (product_list[i].id_incremental, product_list[i].title,
-        product_list[i].price, product_list[i].description,
-        product_list[i].last_modified_date))
+            product_list[i].price, product_list[i].description,
+            product_list[i].last_modified_date))
     if product_list[product_number] is not None:
         choice = int(input('\nType 1 to update product title.\n'
                            'Type 2 to update product description.\n'
