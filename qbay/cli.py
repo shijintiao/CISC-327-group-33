@@ -76,11 +76,12 @@ def update_product(user):
         if product_number not in range(0, len(product_list)):
             print('The number entered is out of range!')
             return
-    print('\nID:%d\nTitle:%s\nPrice:%d\nDescription:%s\n'
-          'Last modified Date:%s\n' 
-          % (product_list[i].id_incremental, product_list[i].title,
-             product_list[i].price, product_list[i].description,
-             product_list[i].last_modified_date))
+    print(
+        '\nID:%d\nTitle:%s\nPrice:%d\nDescription:%s\nLast modified Date:%s\n'
+        % (product_list[i].id_incremental, product_list[i].title,
+            product_list[i].price, product_list[i].description,
+            product_list[i].last_modified_date))
+
     if product_list[product_number] is not None:
         choice = int(input('\nType 1 to update product title.\n'
                            'Type 2 to update product description.\n'
