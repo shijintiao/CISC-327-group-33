@@ -407,6 +407,7 @@ def create_transcation(buyer, seller, product_id, price, date):
     print("Time Stamp: %s" % datetime.now())
     return transaction
 
+
 def create_review(user, soc, product, rev):
     if not soc.isdigit():
         print("Please enter a valid socre.")
@@ -418,7 +419,7 @@ def create_review(user, soc, product, rev):
         print("length of review must greater than 20 "
               "and smaller than 200.")
     review = Review(user_email=user.email, score=int(soc),
-                   product_id=product.id_incremental, review=rev)
+                    product_id=product.id_incremental, review=rev)
     db.session.add(review)
     db.session.commit()
     print("Review adding success.")
