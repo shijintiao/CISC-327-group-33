@@ -160,9 +160,10 @@ def transact(product, user):
 def write_review(user, product):
     rev = input("Please give a review.\n")
     soc = input("Please give a score from 1 to 10\n")
-    if create_review(user, soc, product, rev) == None:
+    if create_review(user, soc, product, rev) is None:
         write_review(user, product)
     return
+
 
 def check_order(user):
     if Product.query.filter(Product.status == 1 
@@ -173,19 +174,19 @@ def check_order(user):
         id = input("Please enter product ID to illustrate detail,"
                    " or other alphabet key to go back.\n")
         if id.isdigit():
-            product = Product.query.filter_by(id_incremental = int(id))
-            Print("Product information: ")
+            product = Product.query.filter_by(id_incremental=int(id))
+            print("Product information: ")
             print("Product ID: " + id)
             print("Product title: " + product[0].title)
             print("Product description: " + product[0].description)
             print("Product price: " + str(product[0].price))
             print("Review information: ")
-            rev = Review.query.filter_by(product_id = int(id))
+            rev = Review.query.filter_by(product_id=int(id))
             print("Product user email: " + rev[0].user_email)
             print("Product score: " + str(rev[0].score))
             print("Product review: " + rev[0].review)
             print("Transcation information: ")
-            trans = Transaction.query.filter_by(product_id = int(id))
+            trans = Transaction.query.filter_by(product_id=int(id))
             print("Product buyer: " + trans[0].buyer)
             print("Product seller: " + trans[0].seller)
             print("Product transcation time: " + trans[0].date)
