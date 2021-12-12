@@ -1,4 +1,5 @@
 import os
+from typing import OrderedDict
 from qbay.cli import *
 import sys
 sys.path.append("..")
@@ -24,13 +25,9 @@ def main():
             elif choice == '3':
                 update_product(user)
             elif choice == '4':
-                checkProduct(user)
-                pass
+                check_product(user)     
             elif choice == '5':
-                # Check past orders
-                # User can see what he bought and sold
-                # Filter by transactions
-                pass
+                check_order(user)
             elif choice == '6':
                 user = None
                 print("You have logged out!")
