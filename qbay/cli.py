@@ -1,5 +1,5 @@
 from datetime import datetime
-from flask_sqlalchemy import BaseQuery
+from flask_sqlalchemy import BaseQuery, _include_sqlalchemy
 
 from sqlalchemy.orm import query
 from qbay.models import *
@@ -127,11 +127,11 @@ def update_product(user):
         return
 
 
-def checkProduct(user):
-    print(Product.query.all())
+def check_product(user):
+    print(Product.query.filter(Product.status == 0).all())
     print("Now you own " + str(user.balance) + " balance.")
     num = input("Which item would you like to purchase? type the ID"
-                " or press letter to back.\n")
+                " or press alphabet key to back.\n")
     if num.isdigit():
         purchase(Product.query.get(int(num)), user)
     else:
@@ -142,8 +142,7 @@ def purchase(product, user):
     if user.balance >= product.price:
         transact(product, user)
         print("Purchase success!")
-        print("Please give the review.")
-        writeReview(user, product)
+        write_review(user, product)
         product.update_status(1)
         print("Now you left " + str(user.balance) + " balance.")
         return
@@ -153,19 +152,47 @@ def purchase(product, user):
 
 
 def transact(product, user):
-    Transaction(product_id=product.id_incremental, price=product.price,
-                date=datetime, buyer=user, seller=product.owner_email)
+    create_transcation(user.email, product.owner_email, product.id_incremental,
+                       product.price, datetime.now())
     return
 
 
-def writeReview(user, product):
-    rev = input()
+def write_review(user, product):
+    rev = input("Please give a review.\n")
     soc = input("Please give a score from 1 to 10\n")
-    if soc.isdigit():
-        if int(soc) <= 10 and int(soc) >= 1:
-            Review(user_email=user.email, score=int(soc),
-                   product_id=product.id_incremental, review=rev)
+    if create_review(user, soc, product, rev) is None:
+        write_review(user, product)
+    return
+
+
+def check_order(user):
+    if Product.query.filter(Product.status == 1 
+       and Product.owner_email == user.email).all():
+        print("These are what you had been trasacrted.")
+        print(Product.query.filter(Product.status == 1 
+              and Product.owner_email == user.email).all())
+        id = input("Please enter product ID to illustrate detail,"
+                   " or other alphabet key to go back.\n")
+        if id.isdigit():
+            product = Product.query.filter_by(id_incremental=int(id))
+            print("Product information: ")
+            print("Product ID: " + id)
+            print("Product title: " + product[0].title)
+            print("Product description: " + product[0].description)
+            print("Product price: " + str(product[0].price))
+            print("Review information: ")
+            rev = Review.query.filter_by(product_id=int(id))
+            print("Product user email: " + rev[0].user_email)
+            print("Product score: " + str(rev[0].score))
+            print("Product review: " + rev[0].review)
+            print("Transcation information: ")
+            trans = Transaction.query.filter_by(product_id=int(id))
+            print("Product buyer: " + trans[0].buyer)
+            print("Product seller: " + trans[0].seller)
+            print("Product transcation time: " + trans[0].date)
+        else:
+            print("Please enter valid product id.")
+            return
     else:
-        print("Please enter valid input.")
-        writeReview(user, product)
+        print("You did not buy anything yet.")
     return
