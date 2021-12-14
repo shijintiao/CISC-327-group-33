@@ -12,11 +12,12 @@ def main():
             choice = input('\nYou have %d balance in your account.\n'
                            'Please Select options\n'
                            '1 to update profile\n'
-                           '2 to create a product\n'
-                           '3 to check your on sale products\n'
+                           '2 to create a product to sale\n'
+                           '3 to browse yours on sale products\n'
                            '4 to browse others\' on sale products.\n'
                            '5 to check past orders\n'
-                           '6 to log out:'
+                           '6 to add your balance.\n'
+                           '7 to log out:'
                            % (user.balance))
             if choice == '1':
                 update_profile(user)
@@ -25,10 +26,12 @@ def main():
             elif choice == '3':
                 update_product(user)
             elif choice == '4':
-                check_product(user)     
+                check_product(user)
             elif choice == '5':
                 check_order(user)
             elif choice == '6':
+                add_balance(user)
+            elif choice == '7':
                 user = None
                 print("You have logged out!")
         else:

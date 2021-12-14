@@ -83,8 +83,18 @@ class User(db.Model):
         self.username = name
         self.shipping_address = address
         self.postal_code = postalCode
+        db.session.commit()
         print("Success!")
         return self
+
+    def add_balance(self, num):
+        if num.isdigit():
+            self.balance += int(num)
+            db.session.commit()
+            return self
+        else:
+            print("Please enter a integer.")
+            return False
 
 
 # This is the Transaction class
@@ -157,6 +167,8 @@ class Product(db.Model):
     # 0 stands for on sale, 1 stands for owned
     status = db.Column(
         db.Integer, nullable=False)
+    buyer = db.Column(
+        db.String(50))
 
     def __repr__(self):
         return '<Product %r>' % self.id_incremental
@@ -204,10 +216,17 @@ class Product(db.Model):
         self.description = description
         self.last_modified_date = datetime.now()
         print("Successfuly update %s!" % self.title)
+        db.session.commit()
         return self
 
     def update_status(self, status):
         self.status = status
+        db.session.commit()
+        return self
+
+    def update_buyer(self, buyer):
+        self.buyer = buyer
+        db.session.commit()
         return self
 
 
@@ -384,7 +403,7 @@ def create_product(title, description, last_modified_date, price, owner_email):
         title=title, description=description,
         owner_email=owner_email, price=price,
         last_modified_date=last_modified_date,
-        status=0)
+        status=0, buyer='')
     # add it to the current database session
     db.session.add(product)
     # actually save the product object
@@ -403,8 +422,8 @@ def create_transcation(buyer, seller, product_id, price, date):
     db.session.add(transaction)
     # actually save the product object
     db.session.commit()
-    print("Transaction NO.%d complete!" % transaction.id_incremental)
-    print("Time Stamp: %s" % datetime.now())
+    print("\nTransaction NO.%d complete!" % transaction.id_incremental)
+    print("Time Stamp: %s\n" % datetime.now())
     return transaction
 
 
@@ -424,4 +443,3 @@ def create_review(user, soc, product, rev):
     db.session.commit()
     print("Review adding success.")
     return review
-    
